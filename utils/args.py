@@ -1,0 +1,32 @@
+import argparse
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output_dir', type=str, default="trained_weights", help="Directory to save model")
+    parser.add_argument('--finetuned_model', type=str, default="./trained_weights/", help="Fine-tuned model directory")
+    parser.add_argument('--filename', type=str, default="dataset/all-data.csv", help="Path to the dataset")
+    parser.add_argument('--model_name', type=str, default="model", help="Base model path")
+    parser.add_argument('--merged_model_dir', type=str, default="./merged_model", help="Directory to save merged model")
+    parser.add_argument('--epochs', type=int, default=1, help="Number of training epochs")
+    parser.add_argument('--batch_size', type=int, default=1, help="Batch size per device")
+    parser.add_argument('--grad_accum_steps', type=int, default=8, help="Gradient accumulation steps")
+    parser.add_argument('--learning_rate', type=float, default=2e-4, help="Learning rate")
+    parser.add_argument('--weight_decay', type=float, default=0.001, help="Weight decay")
+    parser.add_argument('--warmup_ratio', type=float, default=0.03, help="Warmup ratio")
+    parser.add_argument('--device', type=str, default="cuda", help="Device to use (cuda or cpu)")
+    parser.add_argument('--lora_alpha', type=int, default=16, help="Lora alpha parameter")
+    parser.add_argument('--lora_dropout', type=float, default=0.1, help="Lora dropout rate")
+    parser.add_argument('--lora_r', type=int, default=64, help="Lora rank parameter")
+    parser.add_argument('--bias', type=str, default="none", help="Bias parameter for Lora")
+    parser.add_argument('--target_modules', type=str, default="all-linear", help="Target modules for Lora")
+    parser.add_argument('--task_type', type=str, default="CAUSAL_LM", help="Task type for Lora")
+    parser.add_argument('--optim', type=str, default="paged_adamw_32bit", help="Optimizer type")
+    parser.add_argument('--max_grad_norm', type=float, default=0.3, help="Maximum gradient norm")
+    parser.add_argument('--max_steps', type=int, default=-1, help="Maximum training steps")
+    parser.add_argument('--lr_scheduler_type', type=str, default="cosine", help="Learning rate scheduler type")
+    parser.add_argument('--evaluation_strategy', type=str, default="epoch", help="Evaluation strategy")
+    parser.add_argument('--max_shard_size', type=str, default="2GB", help="Maximum shard size for saving model")
+    parser.add_argument('--temperature', type=float, default=0.7, help="Sampling temperature")
+
+    return parser.parse_args()
