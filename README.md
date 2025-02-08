@@ -11,8 +11,8 @@
 ```
 project/
 │
-├── datasets/                 # 存放原始文本文件的目录，用于数据预处理
-|   ├── raw_datas/
+├── datasets/                 
+|   ├── raw_datas/             # 存放原始文本文件的目录，用于数据预处理
 |   |   ├── Sentences_50Agree.txt
 |   |   ├── Sentences_66Agree.txt
 |   |   ├── Sentences_75Agree.txt
